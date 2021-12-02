@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %} Suppliers List {% endblock title %}
+{% block content %}
+  <div class="row" style="color: #ea2088; font-style: bold; font-size: 3rem;">
+    <div class="col-md-8 text-primary">
+      <strong>Suppliers List</strong>
+    </div>
+    <div class="col-md-4">               
+      <div style="float:right;">
+        <a class="btn btn-lg btn-outline-primary" href="{% url 'new-supplier' %}">Add New Supplier</a>
+      </div>
+    </div>
+  </div>
+  <br>
+  <table class="table table-css">
+    <thead class="thead-inverse align-middle text-secondary">
+      <tr>
+        <th width="25%">Name</th>
+        <th width="20%">Phone No</th>
+        <th width="25%">Supplier ID</th>
+        <th width="30%">Actions</th>
+      </tr>
+    </thead>
+    {% if object_list %}
+    <tbody class="text-secondary">
+      {% for supplier in object_list %}
+      <tr>
+        <td>
+          <h3>
+            <a href="{% url 'supplier' supplier.name %}" class="text-secondary">{{ supplier.name }}</a>
+          </h3>
+        </td>
+        <td class="align-middle"> {{ supplier.phone }} </td>
+        <td class="align-middle"> {{ supplier.supplier_id }} </td>
+        <td class="align-middle">
+          <div class="align-middle">
+            <a href="{% url 'edit-supplier' supplier.pk %}" class="btn btn-success">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+              &nbsp;
+            <a href="{% url 'delete-supplier' supplier.pk %}" class="btn btn-danger">Delete</a>
+          </div>
+        </td>              
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="align-middle">
+    {% if is_paginated %}
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% else %}
+  <tbody></tbody>   
+  </table>
+  <br><br><br><br><br><br><br><br>
+  <div style="color: #ea2088; font-style: bold; font-size: 1.5rem; text-align: center;" class="text-secondary">There aren't any suppliers.</div>
+  {% endif %}
+{% endblock content %}

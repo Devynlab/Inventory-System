@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Sales{% endblock title %}
+{% block content %}
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        {% include 'sidebar.html' %}
+        <!-- <div class="vr"></div> -->
+        <div class="col-md-10">
+          <div class="row mt-4 mb-2">
+            <div class="col-md-10">
+              <h2 class="text-center table-header">
+                <strong>List of All Sales</strong>
+              </h2>
+            </div>
+            <div class="col-md-2">
+              <a href="">
+                <button class="btn btn-primary"><strong>Add Sale</strong></button>
+              </a>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sn.</th>
+                <th scope="col">Bill Num.</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>ABCDE-FGHIJ</td>
+                <td>John Smith</td>
+                <td>480</td>
+                <td>10th October, 2021</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

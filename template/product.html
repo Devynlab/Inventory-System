@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Inventory{% endblock title %}
+{% block content %}
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        {% include 'sidebar.html' %}
+        <!-- <div class="vr"></div> -->
+        <div class="col-md-10">
+          <h2 class="text-center m-2 table-header">
+            <strong>List of all Products</strong>
+          </h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sn.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Value</th>
+                <th scope="col">Date Added</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Biriani Rice</td>
+                <td>2</td>
+                <td>240</td>
+                <td>10th October, 2021</td>
+                <td>Delete &nbsp; Update</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

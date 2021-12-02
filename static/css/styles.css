@@ -1,0 +1,53 @@
+/* Color Palette: https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557 */
+
+:root {
+  --red: #e63946;
+  --blue: #457b9d;
+  --grey: #bfbfbf;
+  --dark-grey: #404040;
+  --black: #262626;
+  --orange: #ffaf1a;
+  --bg-one: #33ccff;
+  --dark-blue: #1d3557;
+  --off-white: #f9f9f9;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--grey);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.light-background {
+  background-color: var(--off-white);
+  border: solid 1px var(--dark-grey);
+}
+
+a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: var(--black);
+}
+
+.navbar-brand {
+  color: var(--grey) !important;
+}
+
+.sidebar-links a {
+  color: var(--black);
+  font-size: large;
+  margin-left: 7px;
+}
+
+.table-header {
+  color: var(--dark-grey);
+}

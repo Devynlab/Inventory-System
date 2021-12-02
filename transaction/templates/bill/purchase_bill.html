@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Purchase Bill No : {{ bill.billno }}{% endblock title %}
+{% block content %}
+  <div style="color: #ea2088; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;" class="text-primary">
+    <strong>Purchase Bill No : {{ bill.billno }}</strong>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="bg-white">
+          <br>
+          <div id="printArea" class="bg-white p-5">
+            <div class="text-center text-secondary">
+              <h1>Company</h1>
+              <h3 style="text-decoration: underline;">DEALERS IN : Household Electronic Products</h3>
+              <h5>P.O. Box : 1234, Kalimoni</h5>
+              <h5>EMAIL : householdshop.kalimoni@gmail.com</h5>
+              <h5><strong>Bill No : {{ bill.billno }}</strong></h5>
+              <br>
+            </div>
+            <div class="row mr-3 ml-3">
+              <div class="col-md-4">
+                <h6>Name : <strong>{{ bill.supplier.name }}</strong></h6>
+              </div>
+              <div class="col-md-4">
+                <h6>Date : <strong>{{ bill.time|date:"SHORT_DATE_FORMAT" }}</strong></h6>
+              </div>
+              <div class="col-md-4">
+                <h6>Time : <strong>{{ bill.time|time:"H:i A e" }}</strong></h6>
+              </div>
+            </div>
+            <table class="table mt-4">
+              <thead>
+                <th class="text-center">S/N</th>
+                <th class="text-center">Item</th>
+                <th class="text-center">Unit</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Amount</th>
+              </thead>
+              <tbody>
+                {% for item in items %}
+                <tr style="height: auto">
+                  <td class="text-center">{{ forloop.counter }}</td>
+                  <td class="">{{ item.stock.name }}</td>
+                  <td class="text-center">{{ item.stock.unit }}.</td>
+                  <td class="text-center">{{ item.quantity }}</td>
+                  <td class="text-right">{{ item.perprice|floatformat:"2g" }}</td>
+                  <td class="text-right">{{ item.totalprice|floatformat:"2g" }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="border"></div>
+            <div class="row m-4">
+              <div class="col-md-6 text-right">
+                <h3>Total : </h3>
+              </div>
+              <div class="col-md-6 text-right">
+                {% for purchase in aggregate_sum %}
+                <h3>
+                  Ksh. {{ purchase.get_total_price|floatformat:"2g" }}
+                </h3>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="row m-4 mx-auto text-center font-italic">
+              <div class="col-md-10 mx-auto">
+                <span>THANK YOU FOR PATNERING WITH US!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row justify-content-around">
+          <a href="{% url 'purchases-list' %}" class="btn btn-lg btn-outline-secondary">Go Back</a>
+          <a href="mailto:{{ bill.supplier.email }}" class="btn btn-lg btn-outline-success">Mail Receipt</a>
+          <button class="btn btn-lg btn-outline-primary" onclick="printpage('printArea')">&nbsp; &nbsp;Print&nbsp; &nbsp;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function printpage(divName) {
+      var printContents = document.getElementById(divName).innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+    }
+  </script>
+{% endblock %}
