@@ -145,7 +145,7 @@ class PurchaseCreateView(generic.View):
 class PurchaseDeleteView(SuccessMessageMixin, generic.DeleteView):
   model = models.PurchaseBill
   template_name = "purchases/delete_purchase.html"
-  success_url = 'purchases'
+  success_url = '/transaction/purchases'
 
   def delete(self, *args, **kwargs):
     self.object = self.get_object()
