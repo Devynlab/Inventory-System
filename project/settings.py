@@ -1,12 +1,12 @@
 from pathlib import Path
 
-from decouple import config
+# from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-_5@$fuq8j3_#+szdkf99(a3b8e*w#=1)q#(_281za_5gyu85wj'
 
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -126,5 +126,3 @@ LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
     'logout',
     'about',
 ]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
