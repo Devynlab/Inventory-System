@@ -3,6 +3,8 @@ from django.views import generic
 from inventory.models import Stock
 from transaction import models
 
+from .utils import get_plot
+
 
 class HomeView(generic.View):
   template_name = "home.html"
@@ -35,7 +37,12 @@ class AboutView(generic.TemplateView):
     sales = models.SaleItem.objects.all().values_list('totalprice', flat=True)
     total_sales = sum(sales)
     total_inventory = total_purchases - total_sales
+    x = [x for x in ['Purchases', 'Sales', 'Inventory']]
+    y = [y for y in [total_purchases, total_sales, total_inventory]]
+    print(x, y)
+    chart = get_plot(x, y)
     context["purchases"] = total_purchases
     context["sales"] = total_sales
     context["inventory"] = total_inventory
+    context["chart"] = chart
     return context

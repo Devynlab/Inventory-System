@@ -259,32 +259,32 @@ html { width: 100%; height:100%; overflow:hidden; }
 
 .textinput{
   background-color: #fff;
-  color: white;
+  color: black;
 }
 
 .textinput:disabled{
   background-color: #fff;
-  color: white;
+  color: black;
 }
 
 .putprice {
   background-color: #fff;
-  color: white;
+  color: black;
 }
 
 .emailinput{
   background-color: #fff;
-  color: white;
+  color: black;
 }
 
 .emailinput.focus{
   background-color: #fff;
-  color: white;
+  color: black;
 }
 
 .textinput:focus{
   background-color:#fff;
-  color: white;
+  color: black;
 }
 
 .ghost-button {

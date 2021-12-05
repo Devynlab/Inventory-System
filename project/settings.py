@@ -9,8 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    '35f5-41-80-96-49.ngrok.io'
+    '127.0.0.1'
 ]
 
 DJANGO_APPS = [

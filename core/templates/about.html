@@ -11,10 +11,8 @@
     <div class="col-md-12 mx-auto text-center p-4">
       <h1 class="text-primary"><strong>Regina Inventory System</strong></h1>
     </div>
-    <div style="height: 65vh;" class="col-md-7 border border-success rounded">
-      Purchases - {{ purchases }} <br>
-      Sales - {{ sales }} <br>
-      Inventory - {{ inventory }} <br>
+    <div style="height: 65vh;" class="col-md-7">
+      <img src="data:image/png;base64, {{ chart|safe }}">
     </div>
     <div class="col-md-5">
       <div class="align-right"> 

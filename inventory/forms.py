@@ -5,7 +5,7 @@ from . import models
 class StockForm(forms.ModelForm):
   class Meta:
     model = models.Stock
-    fields = ['name', 'unit', 'quantity']
+    fields = ['name', 'unit', 'brand']
     widgets = {
       'name': forms.TextInput(attrs={
         'class': "form-control",
@@ -15,8 +15,8 @@ class StockForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Unit'
       }),
-      'quantity': forms.NumberInput(attrs={
+      'brand': forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Quantity'
+        'placeholder': 'Brand'
       })
     }
