@@ -126,3 +126,5 @@ LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
     'logout',
     'about',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
